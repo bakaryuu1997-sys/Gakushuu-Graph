@@ -3,7 +3,7 @@ import type { CourseConfig, CourseId } from './types';
 import type { V104WrittenLesson } from './v104WrittenLessonPack';
 
 const titleOf = (node: KnowledgeNodeData) => node.labelVi || node.labelEn || node.labelJa || node.id;
-const textOf = (node: KnowledgeNodeData) => `${node.id} ${node.labelVi} ${node.labelEn} ${node.labelJa} ${node.keywords.join(' ')}`.toLowerCase();
+const textOf = (node: KnowledgeNodeData) => `${node.id} ${node.labelVi} ${node.labelEn} ${node.labelJa} ${(node.keywords || []).join(' ')}`.toLowerCase();
 
 const base = (courseId: CourseId, node: KnowledgeNodeData, topic: string, sample: string): V104WrittenLesson => {
   const name = titleOf(node);
@@ -59,7 +59,7 @@ export function enhanceCourseForV114NonCore(course: CourseConfig): CourseConfig 
       summaryVi: `${written.titleVi}. ${written.purposeVi}`,
       examPointVi: `Trace: ${written.traceVi[0]} ${written.traceVi[1]}`,
       examples: Array.from(new Set([...(node.examples ?? []), written.practiceVi, written.expectedOutputVi, written.miniQuizVi])),
-      keywords: Array.from(new Set([...node.keywords, 'V114R-non-core-written', written.id])),
+      keywords: Array.from(new Set([...(node.keywords || []), 'V114R-non-core-written', written.id])),
     };
   });
 

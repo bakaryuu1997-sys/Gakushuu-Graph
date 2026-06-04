@@ -17,7 +17,7 @@ const checks = [
   ['Python lessons include algorithm specific QA', /Bẫy thuật toán/.test(pythonLessons)],
   ['Release notes component exists', existsSync('src/features/knowledge-graph/components/ReleaseNotesV77R.tsx')],
   ['Release notes mention AI Passport complete local', /AI Passport[\s\S]*complete local/.test(releaseNotes)],
-  ['Release notes mention 基本惁E�� complete local + 科目B', /基本惁E��[\s\S]*complete local \+ 科目B/.test(releaseNotes)],
+  ['Release notes mention 基本情報 complete local + 科目B', /基本情報[\s\S]*complete local \+ 科目B/.test(releaseNotes)],
   ['Release notes mention Python code lab + FastAPI + project', /Python[\s\S]*code lab \+ FastAPI \+ project/.test(releaseNotes)],
   ['Course completion dashboard exists', existsSync('src/features/knowledge-graph/components/CourseCompletionDashboard.tsx')],
   ['Course completion dashboard includes three readiness courses', /ai-passport/.test(courseCompletion) && /fundamental-info/.test(courseCompletion) && /python/.test(courseCompletion)],

@@ -14,7 +14,7 @@ test('AI Passport critical learning flow', async ({ page }) => {
   await page.getByTestId('view-session').click();
   await expect(page.getByText(/Exam Simulator/i).first()).toBeVisible();
 
-  await page.getByRole('button', { name: 'Advanced' }).click();
+  await page.getByRole('button', { name: 'Advanced', exact: true }).click();
   await page.getByTestId('view-graph').click();
   await expect(page.getByText(/Visual Knowledge Map/i)).toBeVisible();
 

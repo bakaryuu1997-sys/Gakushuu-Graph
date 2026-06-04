@@ -19,7 +19,8 @@ const steps = [
 
 for (const [label, command, args] of steps) {
   console.log(`\n▶ ${label}`);
-  const result = spawnSync(command, args, { stdio: 'inherit', shell: false });
+  const cmd = isWin && command.endsWith('.cmd') ? `"${command}"` : command;
+  const result = spawnSync(cmd, args, { stdio: 'inherit', shell: isWin });
   if (result.status !== 0) {
     console.error(`✁E${label} failed`);
     process.exit(result.status ?? 1);
