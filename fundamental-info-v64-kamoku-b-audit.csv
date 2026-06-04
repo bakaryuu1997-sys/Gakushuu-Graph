@@ -1,9 +1,0 @@
-check,status,value
-interactive_trace_trainer_component_exists,pass,src/features/knowledge-graph/components/KamokuBInteractiveTraceTrainer.tsx
-trainer_requires_user_input_before_checking,pass,src/features/knowledge-graph/components/KamokuBInteractiveTraceTrainer.tsx
-trainer_has_hint_and_reset_flow,pass,src/features/knowledge-graph/components/KamokuBInteractiveTraceTrainer.tsx
-trainer_has_kamoku_b_readiness_score,pass,src/features/knowledge-graph/components/KamokuBInteractiveTraceTrainer.tsx
-practice_embeds_interactive_trainer,pass,src/features/knowledge-graph/components/FundamentalInfoPracticeDrills.tsx
-scenario_bank_still_deep_enough,pass,44 scenarios / 25 long-trace
-exam_and_practice_are_labeled_v64,pass,src/features/knowledge-graph/components/FundamentalInfoExamSimulator.tsx|src/features/knowledge-graph/components/FundamentalInfoPracticeDrills.tsx
-verify_includes_v64_audit,pass,scripts/verify.mjs

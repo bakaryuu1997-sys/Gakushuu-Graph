@@ -1,7 +1,0 @@
-check,status,value
-nodeCount>=140,pass,153
-phaseCount>=8,pass,8
-practiceCount>=18,pass,18
-dynamicStudyPath,pass,true
-lessonFactoryDetailed,pass,true
-longFormBeginnerGuidance,pass,true
