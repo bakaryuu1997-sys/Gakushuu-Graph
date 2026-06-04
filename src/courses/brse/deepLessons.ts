@@ -1,0 +1,43 @@
+import type { LessonContent } from '../../features/knowledge-graph/data/lessonContent';
+
+const d=(nodeId:string, shortDefinitionVi:string, whyImportantVi:string, memoryTipVi:string):LessonContent=>({
+  nodeId, shortDefinitionVi, shortDefinitionJa:shortDefinitionVi, whyImportantVi, whyImportantJa:whyImportantVi,
+  examPatternsVi:['Output cần tạo là gì','Cần hỏi lại khách như thế nào','Bẫy認識齟齬 thường gặp'],
+  examPatternsJa:['成果物','確認質問','認識齟齬の注意点'],
+  commonMistakesVi:['Dịch từng chữ nhưng không xác nhận ý nghĩa','Không ghi lại quyết định/open issue','Không phân tích impact khi có thay đổi'],
+  commonMistakesJa:['直訳だけで意味確認しない','決定事項を残さない','影響調査をしない'],
+  memoryTipVi, memoryTipJa:memoryTipVi,
+});
+
+export const brseDeepLessons: LessonContent[] = [
+  d('requirement-definition','要件定義 là giai đoạn biến mong muốn mơ hồ của khách hàng thành phạm vi, điều kiện chấp nhận, ràng buộc và ưu tiên có thể triển khai.','Nếu BrSE làm sai 要件定義, team sẽ code đúng tài liệu nhưng sai nhu cầu thật. Đây là nguồn lớn nhất của 仕様変更 và rework.','Output cần có: mục tiêu nghiệp vụ, scope, out-of-scope, business flow, acceptance criteria, open Q&A.'),
+  d('requirement-analysis','要求分析 là phân tích yêu cầu để tìm mục tiêu thật, actor, nghiệp vụ trước/sau, exception và điểm chưa rõ.','BrSE cần nhìn sau câu chữ để phát hiện lỗ hổng logic trước khi sang design.','Hỏi 5W1H, xác nhận tiền đề, tách fact/assumption/open issue.'),
+  d('non-functional-requirement','非機能要件 là yêu cầu về hiệu năng, bảo mật, khả dụng, vận hành, không phải chức năng màn hình.','Nhiều dự án fail vì chỉ làm đúng function nhưng chậm, không an toàn hoặc khó vận hành.','Nhớ: performance, security, availability, usability, maintainability.'),
+  d('acceptance-criteria','受入基準 là điều kiện để khách hàng xác nhận chức năng đã đạt.','Không có acceptance criteria thì test và UAT dễ tranh cãi đúng/sai.','Viết dạng có thể kiểm chứng: Given/When/Then hoặc checklist kết quả.'),
+  d('definition-of-done','完了条件 là tiêu chuẩn nội bộ để coi task thực sự xong.','Giúp tránh “code xong nhưng chưa test/chưa review/chưa cập nhật tài liệu”.','Done = implement + test + review + evidence + document update nếu cần.'),
+  d('business-flow','業務フロー mô tả luồng nghiệp vụ hiện tại hoặc tương lai bằng các bước và actor.','BrSE dùng flow để phát hiện thiếu nhánh exception hoặc hiểu sai nghiệp vụ.','Luôn hỏi: ai làm, làm khi nào, input/output là gì, exception ra sao.'),
+  d('screen-item-definition','画面項目定義 là bảng mô tả từng item trên màn hình: label, type, required, validation, source, display rule.','Nó giúp dev/test tránh tự đoán rule của từng field.','Field quan trọng: item name, type, length, required, validation, default, remark.'),
+  d('api-spec','API仕様書 mô tả endpoint, method, request, response, error code, auth và business rule.','API spec thiếu rõ khiến frontend/backend hiểu khác nhau.','Cần example request/response và error pattern.'),
+  d('db-item-definition','DB項目定義 mô tả table/column/type/null/key/index/comment.','DB item rõ giúp dev, test, migration và data check đồng bộ.','Không chỉ tên cột: cần type, length, nullable, default, PK/FK, index.'),
+  d('basic-design','基本設計 chuyển requirement thành thiết kế ở mức khách hàng/dev cùng hiểu: screen, API, DB, external IF.','Đây là cầu nối quan trọng giữa khách hàng và detailed design.','Nên review theo requirement traceability: yêu cầu nào map vào thiết kế nào.'),
+  d('detailed-design','詳細設計 mô tả logic xử lý đủ chi tiết để dev implement.','Nếu detail design mơ hồ, code sẽ phụ thuộc suy đoán của từng dev.','Cần main flow, exception, validation, sequence, state transition.'),
+  d('review-perspective','レビュー観点 là góc nhìn review: requirement, consistency, exception, security, performance, maintainability.','Review không có viewpoint dễ chỉ bắt typo mà bỏ lỗi nghiệp vụ.','Chuẩn bị checklist theo loại tài liệu: requirement/design/test/code.'),
+  d('test-case','テストケース là trường hợp kiểm thử có input, bước, expected result và điều kiện tiền đề.','Test case tốt giúp chứng minh chức năng đáp ứng acceptance criteria.','Phải có normal, abnormal, boundary, permission, data variation.'),
+  d('test-evidence','テストエビデンス là bằng chứng test: screenshot, log, data, thời gian, môi trường.','Không có evidence thì khó xác nhận lỗi đã fix hoặc UAT đã hoàn thành.','Evidence phải trace được: bộ kiểm tra ID, result, date, environment.'),
+  d('bug-report','不具合報告 là báo cáo bug đủ thông tin để tái hiện và sửa.','Bug report mơ hồ làm mất thời gian hỏi lại và tranh cãi severity.','Cần summary, steps, expected/actual, environment, evidence, severity, priority.'),
+  d('change-request','仕様変更 là thay đổi yêu cầu/scope sau khi đã thống nhất.','BrSE phải tránh “vâng ngay” mà chưa impact analysis.','Flow: ghi request → phân tích impact → estimate → approve → update docs.'),
+  d('impact-analysis','影響調査 là kiểm tra thay đổi ảnh hưởng tới chức năng, API, DB, test, schedule, cost, release.','Đây là kỹ năng sống còn khi khách Nhật hỏi “sửa chút được không”.','Không chỉ code: phải xem test, data, operation, document, migration.'),
+  d('estimation','見積もり là ước lượng effort/cost/schedule dựa trên scope và risk.','Estimate thiếu căn cứ làm dự án mất niềm tin.','Nêu assumption, scope, excluded items, risk buffer.'),
+  d('minutes','議事録 ghi lại quyết định, open issue, action item, owner và deadline.','Meeting không có minutes dễ dẫn tới 認識齟齬, quên quyết định và không rõ ai chịu trách nhiệm follow-up.','Tập trung vào quyết định và việc cần làm, không ghi mọi câu nói.'),
+  d('qa-management','Q&A管理 quản lý câu hỏi/yêu cầu chưa rõ tới khi có câu trả lời chính thức.','Giúp tránh hỏi trùng, quên câu hỏi, hoặc dev tự đoán.','Cột cần có: question, background, answer, owner, due date, status.'),
+  d('status-report','進捗報告 là báo cáo tiến độ, việc xong/chưa xong, issue, risk và kế hoạch tiếp theo.','Báo cáo tốt giúp khách hàng biết sớm vấn đề thay vì bất ngờ cuối kỳ.','Format tốt: Done / Doing / Issue / Risk / Next / Need support.'),
+  d('risk-management-brse','リスク管理 là phát hiện và xử lý rủi ro trước khi thành issue.','BrSE phải nhìn thấy rủi ro về requirement, resource, schedule, communication.','Risk = khả năng xảy ra + impact + mitigation + owner.'),
+  d('release-judgement','リリース判定 là quyết định có thể release dựa trên bug, test result, risk, rollback plan.','Release không chỉ “build xong”; cần đủ điều kiện vận hành an toàn.','Check: critical bug, test pass, migration, rollback, stakeholder approval.'),
+  d('production-incident','本番障害対応 là xử lý sự cố production theo mức độ ưu tiên và ảnh hưởng khách hàng.','Cần tách xử lý khẩn cấp, báo cáo, điều tra nguyên nhân, phòng tái phát.','War room: status, impact, workaround, ETA, owner, next update time.'),
+  d('incident-report','障害報告書 là báo cáo sự cố gồm timeline, impact, root cause, action, prevention.','Khách hàng cần sự minh bạch và biện pháp ngăn tái phát.','Đừng chỉ nói “đã fix”; cần why happened và how prevent.'),
+  d('customer-negotiation','顧客折衝 là trao đổi với khách hàng để thống nhất scope, priority, deadline và trade-off.','BrSE cần giữ quan hệ nhưng vẫn bảo vệ khả năng thực hiện của team.','Không từ chối thẳng; đưa option, impact, alternative.'),
+  d('ambiguity-control','曖昧表現の制御 là biến câu mơ hồ thành điều kiện rõ ràng.','Khách thường nói “使いやすく”, “早く”, “いい感じ”; dev cần tiêu chuẩn cụ thể.','Hỏi metric, example, target user, acceptance criteria.'),
+  d('ticket-writing','チケット作成 là viết task/bug/change đủ rõ để người khác thực hiện độc lập.','Ticket tốt giảm hỏi lại và giúp estimate đúng hơn.','Cần context, requirement, done criteria, reference, priority.'),
+  d('definition-of-done','完了条件 là tiêu chuẩn để không nhầm giữa “đã làm” và “đã xong”.','Đặc biệt quan trọng với offshore vì mỗi bên có định nghĩa xong khác nhau.','Done checklist nên gắn với test/evidence/review/document.'),
+  d('handover','引き継ぎ là bàn giao kiến thức, trạng thái, issue và tài liệu cho người tiếp nhận.','Handover kém làm mất context và lặp lại lỗi cũ.','Cần current status, open issues, key docs, contacts, risks.'),
+];

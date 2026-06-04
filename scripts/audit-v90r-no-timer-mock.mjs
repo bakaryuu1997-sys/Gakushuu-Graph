@@ -1,0 +1,10 @@
+import { readFileSync } from 'node:fs';
+const data = readFileSync('src/courses/fundamental-info/v90rMockMiniSet.ts', 'utf8');
+const panel = readFileSync('src/features/knowledge-graph/components/FundamentalInfoV90RNoTimerMockPanel.tsx', 'utf8');
+const drills = readFileSync('src/features/knowledge-graph/components/FundamentalInfoPracticeDrills.tsx', 'utf8');
+const all = data + panel + drills;
+const required = ['v90r-pseudocode-max-gap', 'v90r-sql-left-join', 'v90r-network-cidr', 'v90r-security-privilege', 'v90r-management-risk', 'no timer', 'FundamentalInfoV90RNoTimerMockPanel'];
+const missing = required.filter((token) => !all.includes(token));
+if (missing.length) throw new Error(`V90R no timer mock audit missing: ${missing.join(', ')}`);
+if (/timer|đồng hồ/i.test(panel) && /setInterval|setTimeout|Date\.now/.test(panel)) throw new Error('V90R should not implement timer logic');
+console.log('V90R no-timer mock audit pass');

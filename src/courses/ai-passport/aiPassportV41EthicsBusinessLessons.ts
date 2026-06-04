@@ -1,0 +1,43 @@
+import type { LessonContent } from '../../features/knowledge-graph/data/lessonContent';
+
+const e=(nodeId:string, shortDefinitionVi:string, whyImportantVi:string, memoryTipVi:string):LessonContent=>({
+  nodeId, shortDefinitionVi, shortDefinitionJa:shortDefinitionVi, whyImportantVi, whyImportantJa:whyImportantVi,
+  examPatternsVi:['Tình huống law/ethics/business chọn cách xử lý','Nhận diện rủi ro governance/privacy/copyright','Chọn biện pháp kiểm soát phù hợp'],
+  examPatternsJa:['法務・倫理・business場面の対応','governance/privacy/copyrightリスク','適切な統制策'],
+  commonMistakesVi:['Chỉ hỏi AI có làm được không mà quên có nên làm không','Bỏ qua quyền dữ liệu và điều khoản dịch vụ','Không có owner/log/audit khi dùng AI'],
+  commonMistakesJa:['できるかだけ見て、すべきかを見ない','データ権利・利用規約を無視する','owner/log/auditなしで運用する'],
+  memoryTipVi, memoryTipJa:memoryTipVi,
+});
+
+export const aiPassportV41EthicsBusinessLessons: LessonContent[] = [
+  e('ai-ethics','AI ethics là nguyên tắc dùng AI công bằng, minh bạch, an toàn và tôn trọng con người.','Đề thi không chỉ hỏi AI có làm được không, mà hỏi có nên làm không, rủi ro gì và ai chịu trách nhiệm.','Ethics = đúng kỹ thuật chưa đủ; phải đúng trách nhiệm.'),
+  e('accountability-ai','Accountability là xác định ai chịu trách nhiệm khi AI gây lỗi, thiên lệch hoặc quyết định sai.','Doanh nghiệp không thể nói AI tự quyết; cần owner, log, phê duyệt và human review.','AI không chịu trách nhiệm pháp lý; con người/tổ chức chịu.'),
+  e('transparency-ai','Transparency là minh bạch về mục đích dùng AI, dữ liệu, giới hạn và cách phản hồi khi có vấn đề.','Người bị ảnh hưởng bởi quyết định AI cần hiểu AI đang làm gì ở mức phù hợp.','Minh bạch = biết AI dùng để làm gì và giới hạn gì.'),
+  e('privacy-by-design-ai','Privacy by Design là đưa bảo vệ dữ liệu cá nhân vào thiết kế hệ thống AI ngay từ đầu.','AI app xử lý nhiều dữ liệu nên cần tối thiểu hóa, phân quyền, ẩn danh, log và retention policy.','Thiết kế privacy từ đầu, đừng vá sau.'),
+  e('data-minimization-ai','Data minimization là chỉ dùng lượng dữ liệu cần thiết cho mục đích cụ thể.','Nhập quá nhiều dữ liệu vào GenAI làm tăng rủi ro lộ thông tin và vi phạm quy định.','Càng ít dữ liệu nhạy cảm càng ít rủi ro.'),
+  e('consent-ai','Consent là sự đồng ý phù hợp của chủ thể dữ liệu cho mục đích sử dụng dữ liệu.','Có dữ liệu không đồng nghĩa được phép dùng cho AI; cần xem mục đích, phạm vi và quy định.','Có data ≠ có quyền dùng AI.'),
+  e('purpose-limitation-ai','Purpose limitation nghĩa là dữ liệu chỉ dùng cho mục đích đã thông báo/xác định.','Dữ liệu thu thập cho hỗ trợ khách hàng không tự động được dùng để train AI marketing.','Dữ liệu phải dùng đúng mục đích.'),
+  e('data-retention-ai','Data retention quy định giữ prompt, log, output và dữ liệu AI trong bao lâu.','Prompt/output có thể chứa thông tin nhạy cảm; giữ quá lâu làm tăng rủi ro.','Không giữ dữ liệu mãi nếu không có lý do.'),
+  e('audit-log-ai','Audit log ghi lại ai dùng AI, input/tool nào, output quan trọng và thời điểm sử dụng.','Khi có sự cố, log giúp điều tra, audit, quy trách nhiệm và cải tiến governance.','Không log thì khó audit.'),
+  e('copyright-training-data-ai','Copyright training data là rủi ro bản quyền của dữ liệu dùng train/fine-tune model.','Không phải dữ liệu internet nào cũng được phép train hoặc dùng thương mại.','Train data cũng cần quyền sử dụng.'),
+  e('license-ai','License là điều kiện sử dụng dữ liệu, model, code hoặc output AI.','Miễn phí không có nghĩa được dùng thương mại hoặc phân phối lại tùy ý.','Free ≠ unrestricted.'),
+  e('terms-of-service-ai','Terms of Service quy định cách dịch vụ AI xử lý input, output, lưu trữ, training reuse và quyền dùng.','Dùng AI SaaS trong công ty phải kiểm ToS để tránh lộ dữ liệu hoặc vi phạm điều khoản.','Đọc ToS về data trước khi dùng AI tool.'),
+  e('model-card-ai','Model card mô tả mục đích, dữ liệu, metric, giới hạn, rủi ro và cách dùng phù hợp của model.','Giúp người dùng không áp dụng model sai ngữ cảnh và hỗ trợ minh bạch.','Model card = hướng dẫn dùng model có trách nhiệm.'),
+  e('datasheet-ai','Datasheet for dataset mô tả nguồn, cách thu thập, thành phần, bias, license và giới hạn dữ liệu.','Dữ liệu quyết định chất lượng/fairness; datasheet giúp kiểm dữ liệu có phù hợp không.','Dataset cũng cần tài liệu.'),
+  e('red-teaming-ai','AI red teaming là kiểm thử chủ động để tìm cách làm AI sai, lộ thông tin hoặc bị prompt injection.','Rất quan trọng trước khi release chatbot/tool AI nối với tài liệu, email hoặc database.','Thử phá trước khi người ngoài phá.'),
+  e('guardrails-ai','Guardrails là rào chắn kỹ thuật/quy trình giới hạn output, dữ liệu, tool access và hành vi AI.','Prompt tốt không đủ; cần filter, permission, retrieval constraint và human approval.','Guardrails = dây an toàn cho AI app.'),
+  e('content-filter-ai','Content filter chặn input/output không phù hợp như dữ liệu nhạy cảm, nội dung cấm hoặc vi phạm policy.','Giảm rủi ro khi dùng GenAI nhưng không thay thế governance và human review.','Filter giảm rủi ro, không phải hoàn hảo.'),
+  e('human-oversight-ai','Human oversight là cơ chế con người giám sát hệ thống AI qua policy, audit, escalation và review định kỳ.','Khác human-in-the-loop từng quyết định; oversight quản lý toàn bộ hệ thống.','Oversight = người giám sát hệ thống AI.'),
+  e('high-risk-ai','High-risk AI là AI ảnh hưởng lớn tới quyền lợi/an toàn/cơ hội con người như tuyển dụng, tín dụng, y tế.','Rủi ro cao cần kiểm soát cao hơn: explainability, audit, fairness, human review.','High risk → high control.'),
+  e('ai-literacy','AI literacy là năng lực hiểu AI đủ để dùng đúng, kiểm output và nhận biết rủi ro.','Doanh nghiệp cần đào tạo người dùng; nếu không, nhân viên dễ paste dữ liệu nhạy cảm hoặc tin hallucination.','Người dùng phải biết AI mạnh/yếu ở đâu.'),
+  e('shadow-ai','Shadow AI là việc nhân viên dùng công cụ AI ngoài kiểm soát của công ty.','Rủi ro gồm lộ thông tin, vi phạm ToS, không log, không audit; cần policy và tool an toàn.','Không quản lý AI thì AI vẫn bị dùng, nhưng rủi ro cao.'),
+  e('vendor-risk-ai','Vendor risk là rủi ro phụ thuộc nhà cung cấp AI về dữ liệu, SLA, model change, chi phí và compliance.','Chọn AI vendor cần kiểm privacy, security, data location, ToS, exit plan.','AI vendor cũng phải đánh giá như cloud vendor.'),
+  e('cost-management-ai','Cost management kiểm soát chi phí token, inference, training, storage, monitoring và nhân sự vận hành.','AI demo có thể rẻ nhưng production có thể tốn; ROI phải tính chi phí vận hành.','AI cost = API + data + ops + review.'),
+  e('ai-kpi-design','AI KPI design là chọn chỉ số đo giá trị AI gắn mục tiêu kinh doanh, không chỉ metric kỹ thuật.','Accuracy cao nhưng không giảm cost/time/error thì business value thấp.','Technical metric phải nối với business KPI.'),
+  e('change-management-ai','Change management quản lý thay đổi quy trình, vai trò và thói quen khi đưa AI vào tổ chức.','AI thất bại không chỉ vì model; còn vì người dùng không tin/không biết dùng/quy trình không đổi.','AI adoption = model + process + people.'),
+  e('workflow-integration-ai','Workflow integration là gắn AI vào quy trình thật gồm input, approval, exception, output và feedback.','AI tách rời workflow thường ít giá trị; cần tích hợp với nghiệp vụ và human review.','AI phải nằm trong flow làm việc.'),
+  e('feedback-loop-ai','Feedback loop thu phản hồi/kết quả thực tế để cải thiện AI và phát hiện lỗi.','Feedback giúp phát hiện drift, hallucination, nhu cầu mới nhưng phải tránh feedback bẩn/bias.','Feedback tốt giúp AI tốt dần.'),
+  e('incident-response-ai','AI incident response là quy trình xử lý sự cố AI như lộ dữ liệu, output độc hại, bias nghiêm trọng.','Cần owner, severity, communication, containment, root cause và prevention.','AI cũng cần incident plan.'),
+  e('rollback-ai','Rollback AI là khả năng quay về model/prompt/retrieval version trước khi bản mới gây lỗi.','Khi update gây sai, rollback giúp giảm thiệt hại nhanh; cần versioning và deployment control.','Không version thì khó rollback.'),
+  e('continuous-improvement-ai','Continuous improvement là cải tiến AI liên tục dựa trên monitoring, feedback, incident và thay đổi nghiệp vụ.','AI project không kết thúc ở release; cần monitor → review → update → validate.','AI vận hành cần cải tiến liên tục.'),
+];

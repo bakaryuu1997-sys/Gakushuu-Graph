@@ -1,0 +1,9 @@
+check,status,value
+scenario_bank_expanded_to_at_least_40,pass,44
+kamoku_b_advanced_bank_has_at_least_15_new_hard_items,pass,19
+long_trace_bank_is_deep_enough,pass,25
+advanced_topics_cover_core_kamoku_b_patterns,pass,v63-kamoku-b-array-second-max|v63-kamoku-b-recursive-fibonacci|v63-kamoku-b-quicksort-partition|v63-kamoku-b-dp-coin-change|v63-kamoku-b-debug-infinite-loop
+clear_step_explanations_exist_for_new_drills,pass,src/courses/fundamental-info/examScenarios.ts
+ui_points_to_v63_deep_drill,pass,src/features/knowledge-graph/components/FundamentalInfoScenarioDrills.tsx|src/features/knowledge-graph/components/FundamentalInfoPracticeDrills.tsx|src/features/knowledge-graph/components/FundamentalInfoFocusMode.tsx
+exam_simulator_mentions_v63_scenario_bank,pass,src/features/knowledge-graph/components/FundamentalInfoExamSimulator.tsx
+verify_includes_v63_audit,pass,scripts/verify.mjs

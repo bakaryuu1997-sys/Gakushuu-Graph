@@ -1,0 +1,9 @@
+check,passed
+"PythonLocalBackupPanel exists",PASS
+"PythonFinalQaPanel exists",PASS
+"Practice tabs include backup",PASS
+"Practice tabs include final QA",PASS
+"Code Lab V76R label",PASS
+"Local backup version marker",PASS
+"Final QA mobile checklist",PASS
+"Runtime fallback card retained",PASS

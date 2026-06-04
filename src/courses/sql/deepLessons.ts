@@ -1,0 +1,43 @@
+import type { LessonContent } from '../../features/knowledge-graph/data/lessonContent';
+
+const s=(nodeId:string, shortDefinitionVi:string, whyImportantVi:string, memoryTipVi:string):LessonContent=>({
+  nodeId, shortDefinitionVi, shortDefinitionJa:shortDefinitionVi, whyImportantVi, whyImportantJa:whyImportantVi,
+  examPatternsVi:['Chọn cú pháp đúng','Phân biệt với lệnh gần giống','Tìm lỗi trong query thực tế'],
+  examPatternsJa:['正しい構文','類似命令との違い','SQLの誤り発見'],
+  commonMistakesVi:['Nhớ cú pháp nhưng không hiểu thứ tự xử lý','Quên WHERE khi UPDATE/DELETE','JOIN thiếu điều kiện hoặc dùng DISTINCT để che lỗi'],
+  commonMistakesJa:['処理順序を理解しない','UPDATE/DELETEでWHEREを忘れる','JOIN条件不足'],
+  memoryTipVi, memoryTipJa:memoryTipVi,
+});
+
+export const sqlDeepLessons: LessonContent[] = [
+  s('select','SELECT dùng để chọn cột/dữ liệu cần xem từ một hoặc nhiều bảng.','Đây là gốc của mọi truy vấn SQL. Nếu SELECT list không rõ, report dễ sai hoặc lộ dữ liệu không cần thiết.','Nhớ thứ tự viết cơ bản: SELECT columns FROM table WHERE condition ORDER BY columns.'),
+  s('where','WHERE lọc từng dòng trước khi GROUP BY hoặc aggregate.','Bẫy phổ biến là dùng WHERE để lọc kết quả sau khi group; lúc đó phải dùng HAVING.','WHERE lọc row; HAVING lọc group.'),
+  s('join','JOIN nối dữ liệu từ nhiều bảng dựa trên quan hệ khóa hoặc điều kiện logic.','JOIN sai ON condition có thể làm nhân dữ liệu, sai báo cáo và khó debug.','Luôn hỏi: bảng chính là gì, key nối là gì, có cần giữ dòng không khớp không.'),
+  s('inner-join','INNER JOIN chỉ lấy các dòng có cặp khớp ở cả hai bảng.','Dùng khi chỉ cần dữ liệu có quan hệ đầy đủ. Nếu cần giữ bảng trái, dùng LEFT JOIN.','INNER = giao nhau.'),
+  s('left-join','LEFT JOIN giữ toàn bộ dòng bảng trái và lấy dữ liệu bảng phải nếu có khớp.','Hay dùng để tìm dữ liệu thiếu, ví dụ customer chưa có order.','LEFT = giữ bên trái, bên phải không có thì NULL.'),
+  s('group-by','GROUP BY gom các dòng thành nhóm để tính tổng, đếm, trung bình hoặc thống kê.','Sai lầm hay gặp là SELECT cột không nằm trong GROUP BY hoặc aggregate.','Group trước, aggregate sau; SELECT chỉ nên có group key hoặc aggregate.'),
+  s('having','HAVING lọc kết quả sau GROUP BY dựa trên aggregate.','HAVING rất hay bị nhầm với WHERE trong bài thi và thực tế report.','WHERE before group, HAVING after group.'),
+  s('aggregate-functions','Aggregate functions như COUNT, SUM, AVG, MIN, MAX tính toán trên nhiều dòng.','Report doanh thu, số lượng, trung bình đều cần aggregate.','COUNT đếm, SUM cộng, AVG trung bình, MIN/MAX biên.'),
+  s('subquery','Subquery là truy vấn lồng trong truy vấn khác để lấy điều kiện hoặc tập dữ liệu trung gian.','Dùng tốt cho bài toán cần so sánh với kết quả tính toán khác, nhưng có thể khó đọc nếu lồng quá sâu.','Nếu subquery phức tạp, cân nhắc CTE.'),
+  s('cte','CTE/WITH đặt tên cho truy vấn trung gian để câu SQL dễ đọc và tái sử dụng trong cùng query.','Giúp report phức tạp dễ bảo trì hơn subquery lồng nhiều tầng.','WITH temp AS (...) SELECT ... FROM temp.'),
+  s('window-function','Window function tính toán trên “cửa sổ” dòng mà không gộp mất dòng như GROUP BY.','Dùng cho ranking, running total, so sánh dòng trước/sau trong report nâng cao.','Window giữ từng row; GROUP BY gom row.'),
+  s('insert','INSERT thêm dòng mới vào bảng.','Cần hiểu column list và constraint để tránh sai thứ tự cột hoặc thiếu dữ liệu bắt buộc.','Luôn ghi rõ column list khi INSERT.'),
+  s('update','UPDATE sửa dữ liệu đã có trong bảng bằng cách chỉ định cột cần đổi và điều kiện dòng cần sửa.','Lệnh này nguy hiểm nếu thiếu WHERE vì có thể sửa toàn bộ bảng.','UPDATE + SET + WHERE. Trước khi update, chạy SELECT cùng WHERE để kiểm tra.'),
+  s('delete','DELETE xóa các dòng trong bảng theo điều kiện WHERE và cần được kiểm tra kỹ trước khi chạy.','Thiếu WHERE có thể xóa toàn bộ dữ liệu, vì vậy cần transaction/backup trong thao tác quan trọng.','DELETE cần WHERE; dữ liệu quan trọng thì dùng transaction.'),
+  s('primary-key','PRIMARY KEY định danh duy nhất cho mỗi dòng trong bảng.','PK là nền cho quan hệ, JOIN, data integrity và foreign key.','PK = unique + not null + identity của row.'),
+  s('foreign-key','FOREIGN KEY ràng buộc một cột tham chiếu tới primary key ở bảng khác.','FK giúp giữ toàn vẹn quan hệ, tránh order trỏ tới customer không tồn tại.','FK = cầu nối giữa bảng.'),
+  s('index','INDEX là cấu trúc dữ liệu giúp database tìm dòng nhanh hơn cho WHERE/JOIN/ORDER BY nhưng tốn dung lượng và chi phí ghi.','Index tốt tăng tốc WHERE/JOIN/ORDER BY; index quá nhiều làm chậm INSERT/UPDATE.','Index giống mục lục sách: đọc nhanh hơn, cập nhật tốn hơn.'),
+  s('composite-index','Composite index là index gồm nhiều cột theo thứ tự.','Thứ tự cột trong composite index ảnh hưởng lớn tới hiệu quả truy vấn.','Index (a,b) hỗ trợ tốt điều kiện bắt đầu từ a.'),
+  s('explain','EXPLAIN cho biết query plan để hiểu database sẽ đọc bảng/index như thế nào.','Dùng để tối ưu truy vấn thay vì đoán mò.','EXPLAIN để xem có full scan, index usage, join order.'),
+  s('transaction','TRANSACTION gom nhiều thao tác thành một đơn vị thành công hoặc rollback cùng nhau.','Quan trọng với nghiệp vụ tiền, đơn hàng, tồn kho để tránh dữ liệu nửa vời.','All or nothing.'),
+  s('commit-rollback','COMMIT xác nhận toàn bộ thay đổi trong transaction, còn ROLLBACK hủy các thay đổi chưa commit khi có lỗi.','Đây là cơ chế an toàn khi update/delete/transfer nhiều bước.','Sai thì rollback, đúng thì commit.'),
+  s('acid','ACID là 4 tính chất đảm bảo transaction an toàn: Atomicity, Consistency, Isolation và Durability.','Hay ra trong câu hỏi về tính an toàn và nhất quán dữ liệu.','A all-or-nothing, C hợp lệ, I cô lập, D bền vững.'),
+  s('isolation-level','Isolation level quyết định transaction nhìn thấy thay đổi của transaction khác ở mức nào.','Liên quan lỗi dirty read, non-repeatable read, phantom read.','Isolation cao hơn an toàn hơn nhưng có thể giảm concurrency.'),
+  s('deadlock','Deadlock xảy ra khi các transaction giữ lock và chờ nhau vô hạn.','Thực tế production cần phát hiện, rollback một transaction và retry.','Deadlock = A chờ B, B chờ A.'),
+  s('sql-injection','SQL Injection là tấn công chèn SQL độc hại qua input người dùng.','Đây là rủi ro bảo mật cực phổ biến trong app dùng database.','Không nối chuỗi input vào SQL; dùng parameterized query.'),
+  s('parameterized-query','Parameterized query tách câu SQL và dữ liệu input thành parameter an toàn.','Đây là biện pháp chính để phòng SQL Injection.','SQL cố định, input là parameter.'),
+  s('normalization','Normalization là thiết kế dữ liệu giảm trùng lặp và bất nhất bằng cách tách bảng hợp lý.','Giúp dữ liệu nhất quán nhưng đôi khi cần denormalization cho hiệu năng/report.','Normalize để đúng; denormalize khi có lý do hiệu năng rõ.'),
+  s('case-when','CASE WHEN tạo điều kiện if/else trong SELECT để phân loại hoặc tính cột dẫn xuất.','Hay dùng trong report để biến dữ liệu thô thành nhóm nghiệp vụ.','CASE WHEN condition THEN value ELSE value END.'),
+  s('distinct','DISTINCT loại bỏ dòng trùng trong kết quả SELECT.','Dễ bị dùng để che lỗi JOIN nhân dữ liệu thay vì sửa nguyên nhân.','Nếu cần DISTINCT sau JOIN, hãy kiểm tra lại ON condition.'),
+  s('is-null','IS NULL kiểm tra giá trị thiếu/null; không dùng = NULL.','Đây là lỗi SQL cơ bản nhưng rất hay gặp.','NULL không bằng gì cả; dùng IS NULL / IS NOT NULL.'),
+];

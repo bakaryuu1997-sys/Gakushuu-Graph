@@ -1,0 +1,8 @@
+check,status,value
+fundamental_lesson_polish_component,pass,src/features/knowledge-graph/components/FundamentalInfoLessonPolish.tsx
+lesson_panel_uses_fundamental_polish,pass,src/features/knowledge-graph/components/LessonPanel.tsx
+practice_workbench_component,pass,src/features/knowledge-graph/components/FundamentalPracticeWorkbenches.tsx
+practice_drills_embeds_workbench,pass,src/features/knowledge-graph/components/FundamentalInfoPracticeDrills.tsx
+readiness_dashboard_component,pass,src/features/knowledge-graph/components/FundamentalInfoReadinessDashboard.tsx
+focus_mode_embeds_readiness,pass,src/features/knowledge-graph/components/FundamentalInfoFocusMode.tsx
+verify_includes_v60_audit,pass,scripts/verify.mjs

@@ -1,0 +1,10 @@
+check,status,value
+scenario_bank_has_at_least_25_items,pass,44
+scenario_bank_covers_all_fe_domains,pass,algorithm|database|network|security|management|strategy
+japanese_scenarios_expanded,pass,13
+long_trace_scenarios_expanded,pass,25
+sql_step_scenarios_expanded,pass,6
+scenario_drill_has_v62_keyword_highlight,pass,src/features/knowledge-graph/components/FundamentalInfoScenarioDrills.tsx
+exam_simulator_has_v62_readiness_plan,pass,src/features/knowledge-graph/components/FundamentalInfoExamSimulator.tsx
+focus_and_practice_point_to_v62,pass,src/features/knowledge-graph/components/FundamentalInfoFocusMode.tsx|src/features/knowledge-graph/components/FundamentalInfoPracticeDrills.tsx
+verify_includes_v62_audit,pass,scripts/verify.mjs
