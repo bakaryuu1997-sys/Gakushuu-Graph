@@ -21,8 +21,8 @@ for (const [label, command, args] of steps) {
   console.log(`\n▶ ${label}`);
   const result = spawnSync(command, args, { stdio: 'inherit', shell: false });
   if (result.status !== 0) {
-    console.error(`✗ ${label} failed`);
+    console.error(`✁E${label} failed`);
     process.exit(result.status ?? 1);
   }
 }
-console.log('\n✓ verify passed');
+console.log('\n✁Everify passed');

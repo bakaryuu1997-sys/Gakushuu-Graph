@@ -6,5 +6,5 @@ const all = data + panel + drills;
 const required = ['v90r-pseudocode-max-gap', 'v90r-sql-left-join', 'v90r-network-cidr', 'v90r-security-privilege', 'v90r-management-risk', 'no timer', 'FundamentalInfoV90RNoTimerMockPanel'];
 const missing = required.filter((token) => !all.includes(token));
 if (missing.length) throw new Error(`V90R no timer mock audit missing: ${missing.join(', ')}`);
-if (/timer|đồng hồ/i.test(panel) && /setInterval|setTimeout|Date\.now/.test(panel)) throw new Error('V90R should not implement timer logic');
+if (/timer|đồng hềEi.test(panel) && /setInterval|setTimeout|Date\.now/.test(panel)) throw new Error('V90R should not implement timer logic');
 console.log('V90R no-timer mock audit pass');

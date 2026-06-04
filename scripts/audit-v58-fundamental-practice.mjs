@@ -15,9 +15,9 @@ const rows = kinds.map((kind) => ({ kind, count: (practiceSource.match(new RegEx
 const checks = [
   { name: 'practice_tasks_at_least_9', pass: taskIds.length >= 9, value: taskIds.length },
   ...rows.map((row) => ({ name: `has_${row.kind}_tasks`, pass: row.count >= 3, value: row.count })),
-  { name: 'fundamental_start_route', pass: workspaceSource.includes('FundamentalInfoFocusMode') && workspaceSource.includes('activeView === "start" && props.courseTitle.includes("基本情報")'), value: 'LessonWorkspace' },
-  { name: 'fundamental_session_route', pass: workspaceSource.includes('FundamentalInfoExamSimulator') && workspaceSource.includes('activeView === "session" && props.courseTitle.includes("基本情報")'), value: 'LessonWorkspace' },
-  { name: 'fundamental_practice_route', pass: workspaceSource.includes('FundamentalInfoPracticeDrills') && workspaceSource.includes('activeView === "practice" && props.courseTitle.includes("基本情報")'), value: 'LessonWorkspace' },
+  { name: 'fundamental_start_route', pass: workspaceSource.includes('FundamentalInfoFocusMode') && workspaceSource.includes('activeView === "start" && props.courseTitle.includes("基本惁E��")'), value: 'LessonWorkspace' },
+  { name: 'fundamental_session_route', pass: workspaceSource.includes('FundamentalInfoExamSimulator') && workspaceSource.includes('activeView === "session" && props.courseTitle.includes("基本惁E��")'), value: 'LessonWorkspace' },
+  { name: 'fundamental_practice_route', pass: workspaceSource.includes('FundamentalInfoPracticeDrills') && workspaceSource.includes('activeView === "practice" && props.courseTitle.includes("基本惁E��")'), value: 'LessonWorkspace' },
   ...componentFiles.map((file) => ({ name: `component_${path.basename(file)}`, pass: fs.existsSync(path.resolve(file)), value: file })),
 ];
 

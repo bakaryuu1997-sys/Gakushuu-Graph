@@ -23,7 +23,7 @@ const checks = [
 ];
 const pass = checks.filter(([, ok]) => ok).length;
 const csv = ['check,status', ...checks.map(([name, ok]) => `${JSON.stringify(name)},${ok ? 'pass' : 'fail'}`), `"project count",${projectCount}`, `"fastapi project count",${fastApiCount}`].join('\n');
-fs.writeFileSync('/mnt/data/python-v71r-project-runner-audit.csv', csv);
+fs.writeFileSync('python-v71r-project-runner-audit.csv', csv);
 console.log(`Python V71R project runner audit: ${pass}/${checks.length} checks`);
 console.log(`Projects: ${projectCount}, FastAPI/AI API projects: ${fastApiCount}`);
 for (const [name, ok] of checks) console.log(`${ok ? 'pass' : 'fail'} - ${name}`);

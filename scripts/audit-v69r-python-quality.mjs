@@ -22,7 +22,7 @@ const checks = [
 ];
 const pass = checks.filter(([, ok]) => ok).length;
 const csv = ['check,status', ...checks.map(([name, ok]) => `${JSON.stringify(name)},${ok ? 'pass' : 'fail'}`), `"code exercises",${exerciseCount}`, `"algorithm exercises",${algorithmCount}`, `"backend exercises",${backendCount}`, `"visual patterns",${visualCount}`].join('\n');
-fs.writeFileSync('/mnt/data/python-v69r-quality-audit.csv', csv);
+fs.writeFileSync('python-v69r-quality-audit.csv', csv);
 console.log(`Python V69R quality audit: ${pass}/${checks.length} checks`);
 console.log(`Code exercises: ${exerciseCount}`);
 console.log(`Algorithm exercises: ${algorithmCount}`);

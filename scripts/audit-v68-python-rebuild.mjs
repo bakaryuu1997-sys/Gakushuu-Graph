@@ -20,7 +20,7 @@ const checks = [
 ];
 const pass = checks.filter(([, ok]) => ok).length;
 const csv = ['check,status', ...checks.map(([name, ok]) => `${JSON.stringify(name)},${ok ? 'pass' : 'fail'}`), `"python nodes",${nodeCount}`, `"code exercises",${exerciseCount}`].join('\n');
-fs.writeFileSync('/mnt/data/python-v68r-rebuild-audit.csv', csv);
+fs.writeFileSync('python-v68r-rebuild-audit.csv', csv);
 console.log(`Python V68R rebuild audit: ${pass}/${checks.length} checks`);
 console.log(`Python nodes: ${nodeCount}`);
 console.log(`Code exercises: ${exerciseCount}`);

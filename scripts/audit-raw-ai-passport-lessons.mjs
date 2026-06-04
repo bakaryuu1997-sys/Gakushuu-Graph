@@ -21,10 +21,10 @@ const files = [
 ];
 
 const placeholderPhrases = [
-  'Trước hết hãy hiểu nó giải quyết vấn đề gì',
+  'Trước hết hãy hiểu nó giải quyết vấn đềEgì',
   'là một mục cần nắm trong AI Passport',
   'khái niệm AI Passport cần hiểu theo bối cảnh',
-  'bằng 3 điểm: mục đích → ví dụ → rủi ro',
+  'bằng 3 điểm: mục đích ↁEví dụ ↁErủi ro',
   'Hãy học theo 4 phần',
   'nội dung nháp',
   'TODO',

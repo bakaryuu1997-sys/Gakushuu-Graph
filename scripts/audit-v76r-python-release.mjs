@@ -17,7 +17,7 @@ async function read(path) {
 }
 
 const rows = ['check,passed', ...checks.map(([label, pass]) => `${JSON.stringify(label)},${pass ? 'PASS' : 'FAIL'}`)];
-writeFileSync('/mnt/data/python-v76r-release-audit.csv', rows.join('\n'));
+writeFileSync('python-v76r-release-audit.csv', rows.join('\n'));
 const failed = checks.filter(([, pass]) => !pass);
 if (failed.length) {
   console.error('V76R Python release audit failed');

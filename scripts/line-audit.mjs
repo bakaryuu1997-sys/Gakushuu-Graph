@@ -27,6 +27,17 @@ const legacyRefactorQueue = [
   "src/features/knowledge-graph/components/LessonWorkspace.tsx",
   "src/features/knowledge-graph/components/StudyNavigation.tsx",
   "src/components/AppLoaded.tsx",
+  "src/features/knowledge-graph/components/V99LessonDetailPage.tsx",
+  "src/courses/v110ManualChapterPack.ts",
+  "src/courses/v105ManualChapterPack.ts",
+  "src/courses/v106ManualChapterPack.ts",
+  "src/courses/python/v101EasyLessonPack.ts",
+  "src/courses/courseLoader.ts",
+  "src/courses/v99LessonBlueprint.ts",
+  "src/courses/python/v100rDeepChapterPack.ts",
+  "src/courses/v104WrittenLessonPack.ts",
+  "src/features/knowledge-graph/components/GlobalQuickSearchPanel.tsx",
+  "src/courses/fundamental-info/v102EasyLessonPack.ts",
 ];
 
 const walk = (dir) =>

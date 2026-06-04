@@ -27,6 +27,6 @@ const passed = checks.filter(([, ok]) => ok).length;
 const rows = ['check,status', ...checks.map(([name, ok]) => `${name},${ok ? 'pass' : 'fail'}`)];
 writeFileSync(resolve(root, 'ai-passport-v55-exam-polish-audit.csv'), rows.join('\n') + '\n');
 console.log(`V55 exam polish audit: ${passed}/${checks.length} checks passed`);
-for (const [name, ok] of checks) console.log(`${ok ? '✓' : '✗'} ${name}`);
+for (const [name, ok] of checks) console.log(`${ok ? '✁E : '✁E} ${name}`);
 if (passed !== checks.length) process.exit(1);
 process.exit(0);

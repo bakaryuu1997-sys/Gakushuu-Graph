@@ -7,4 +7,4 @@ for (const token of ['v84r-oop-state-invariant','v84r-file-parser-pipeline','v84
 }
 if (!panel.includes('Search code / keyword') || !panel.includes('V84R Python lesson deep polish')) throw new Error('V84R panel missing filter UI or heading');
 if (!catalog.includes('pythonV84RDeepPolishLessons') || !catalog.includes('V84R-${polish.track}')) throw new Error('V84R catalog enrichment missing');
-console.log('✅ V84R Python deep polish audit passed');
+console.log('✁EV84R Python deep polish audit passed');

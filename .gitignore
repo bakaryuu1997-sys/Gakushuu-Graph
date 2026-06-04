@@ -23,6 +23,9 @@ build/
 .DS_Store
 Thumbs.db
 
+# CSV Audit Files
+*.csv
+
 # Log files
 *.log
 npm-debug.log*

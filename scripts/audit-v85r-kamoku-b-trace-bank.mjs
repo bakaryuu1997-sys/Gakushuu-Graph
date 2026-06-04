@@ -7,4 +7,4 @@ for (const token of ['v85r-array-rotate-trace','v85r-stack-parentheses-trace','v
 }
 if (!scenarios.includes('fundamentalInfoV85RTraceBank') || !scenarios.includes('push(...fundamentalInfoV85RTraceBank)')) throw new Error('V85R scenarios not merged');
 if (!panel.includes('Search trace / SQL / security') || !panel.includes('V85R 科目B trace bank')) throw new Error('V85R panel missing filter UI or heading');
-console.log('✅ V85R Kamoku B trace bank audit passed');
+console.log('✁EV85R Kamoku B trace bank audit passed');

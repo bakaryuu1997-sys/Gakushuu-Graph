@@ -9,4 +9,4 @@ const pkg = readFileSync('package.json', 'utf8');
 for (const token of ['audit:v84r-python-polish','audit:v85r-kamoku-b-trace','audit:v86r-ui-quality','audit:v87r-release-candidate']) {
   if (!pkg.includes(token)) throw new Error(`package.json missing ${token}`);
 }
-console.log('✅ V87R release candidate audit passed');
+console.log('✁EV87R release candidate audit passed');

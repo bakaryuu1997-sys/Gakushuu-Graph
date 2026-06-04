@@ -12,8 +12,8 @@ const files = {
 };
 const read = (key) => fs.readFileSync(path.resolve(files[key]), 'utf8');
 const checks = [
-  { name: 'fundamental_lesson_polish_component', pass: fs.existsSync(files.lessonPolish) && read('lessonPolish').includes('科目A point') && read('lessonPolish').includes('科目B point') && read('lessonPolish').includes('日本語のひっかけ'), value: files.lessonPolish },
-  { name: 'lesson_panel_uses_fundamental_polish', pass: read('lessonPanel').includes('FundamentalInfoLessonPolish') && read('lessonPanel').includes('courseTitle.includes("基本情報")'), value: files.lessonPanel },
+  { name: 'fundamental_lesson_polish_component', pass: fs.existsSync(files.lessonPolish) && read('lessonPolish').includes('科目A point') && read('lessonPolish').includes('科目B point') && read('lessonPolish').includes('日本語�Eひっかけ'), value: files.lessonPolish },
+  { name: 'lesson_panel_uses_fundamental_polish', pass: read('lessonPanel').includes('FundamentalInfoLessonPolish') && read('lessonPanel').includes('courseTitle.includes("基本惁E��")'), value: files.lessonPanel },
   { name: 'practice_workbench_component', pass: fs.existsSync(files.workbench) && read('workbench').includes('Pseudo-code trace workbench') && read('workbench').includes('SQL visual workbench') && read('workbench').includes('Subnet calculator workbench'), value: files.workbench },
   { name: 'practice_drills_embeds_workbench', pass: read('practiceDrills').includes('FundamentalPracticeWorkbench') && read('practiceDrills').includes('kind={filter}'), value: files.practiceDrills },
   { name: 'readiness_dashboard_component', pass: fs.existsSync(files.readiness) && read('readiness').includes('Algorithm / 科目B') && read('readiness').includes('Database / SQL') && read('readiness').includes('Strategy / Law'), value: files.readiness },

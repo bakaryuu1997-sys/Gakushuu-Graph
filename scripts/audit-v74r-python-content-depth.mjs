@@ -15,7 +15,7 @@ const checks = [
   ['8+ FastAPI/backend exercises', backendCount >= 8],
   ['4+ file/data practical exercises', fileCount >= 4],
   ['most exercises include hidden tests', hiddenCount >= 50],
-  ['why-this-matters panel explains AI/backend/automation/algorithm', ['AI / data work','Backend / FastAPI','Automation / 仕事','Algorithm thinking'].every((word) => why.includes(word))],
+  ['why-this-matters panel explains AI/backend/automation/algorithm', ['AI / data work','Backend / FastAPI','Automation / 仕亁E,'Algorithm thinking'].every((word) => why.includes(word))],
   ['real-world exercise map is visible in Code tab', tabs.includes('PythonRealWorldExerciseMap') && map.includes('V74R Exercise map')],
   ['today tab includes why-this-matters panel', tabs.includes('PythonWhyThisMattersPanel')],
   ['suite and focus label V74R', suite.includes('V74R Python Final Content Depth') && focus.includes('V74R Python Final Content Depth + Real Exercises')],
@@ -23,7 +23,7 @@ const checks = [
 ];
 const pass = checks.filter(([, ok]) => ok).length;
 const csv = ['check,status', ...checks.map(([name, ok]) => `${JSON.stringify(name)},${ok ? 'pass' : 'fail'}`)].join('\n');
-fs.writeFileSync('/mnt/data/python-v74r-content-depth-audit.csv', csv);
+fs.writeFileSync('python-v74r-content-depth-audit.csv', csv);
 console.log(`Python V74R content depth audit: ${pass}/${checks.length} checks`);
 for (const [name, ok] of checks) console.log(`${ok ? 'pass' : 'fail'} - ${name}`);
 if (pass !== checks.length) process.exit(1);

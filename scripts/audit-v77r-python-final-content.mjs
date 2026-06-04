@@ -17,7 +17,7 @@ const checks = [
   ['Python lessons include algorithm specific QA', /Bẫy thuật toán/.test(pythonLessons)],
   ['Release notes component exists', existsSync('src/features/knowledge-graph/components/ReleaseNotesV77R.tsx')],
   ['Release notes mention AI Passport complete local', /AI Passport[\s\S]*complete local/.test(releaseNotes)],
-  ['Release notes mention 基本情報 complete local + 科目B', /基本情報[\s\S]*complete local \+ 科目B/.test(releaseNotes)],
+  ['Release notes mention 基本惁E�� complete local + 科目B', /基本惁E��[\s\S]*complete local \+ 科目B/.test(releaseNotes)],
   ['Release notes mention Python code lab + FastAPI + project', /Python[\s\S]*code lab \+ FastAPI \+ project/.test(releaseNotes)],
   ['Course completion dashboard exists', existsSync('src/features/knowledge-graph/components/CourseCompletionDashboard.tsx')],
   ['Course completion dashboard includes three readiness courses', /ai-passport/.test(courseCompletion) && /fundamental-info/.test(courseCompletion) && /python/.test(courseCompletion)],
@@ -26,7 +26,7 @@ const checks = [
 ];
 
 const rows = ['check,passed', ...checks.map(([label, pass]) => `${JSON.stringify(label)},${pass ? 'PASS' : 'FAIL'}`)];
-writeFileSync('/mnt/data/python-v77r-release-notes-audit.csv', rows.join('\n'));
+writeFileSync('python-v77r-release-notes-audit.csv', rows.join('\n'));
 const failed = checks.filter(([, pass]) => !pass);
 if (failed.length) {
   console.error('V77R Python final content audit failed');

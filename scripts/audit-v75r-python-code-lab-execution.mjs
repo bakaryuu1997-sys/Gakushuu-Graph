@@ -19,7 +19,7 @@ const checks = [
 ];
 const pass = checks.filter(([, ok]) => ok).length;
 const csv = ['check,status', ...checks.map(([name, ok]) => `${JSON.stringify(name)},${ok ? 'pass' : 'fail'}`)].join('\n');
-fs.writeFileSync('/mnt/data/python-v75r-code-lab-execution-audit.csv', csv);
+fs.writeFileSync('python-v75r-code-lab-execution-audit.csv', csv);
 console.log(`Python V75R code lab execution audit: ${pass}/${checks.length} checks`);
 for (const [name, ok] of checks) console.log(`${ok ? 'pass' : 'fail'} - ${name}`);
 if (pass !== checks.length) process.exit(1);

@@ -7,5 +7,5 @@ for (const token of ['v81r-mixed-pseudocode-nested-loop','v81r-mixed-sql-where-h
 }
 for (const domain of ['algorithm','database','network','security']) if (!file.includes(`domain: '${domain}'`)) throw new Error(`V81R domain missing ${domain}`);
 if (!scenarios.includes('fundamentalInfoV81RMixedMockMiniSet')) throw new Error('V81R scenarios are not merged');
-if (!panel.includes('V81R 基本情報 mixed mock mini-set')) throw new Error('V81R panel missing');
-console.log('✅ V81R mixed mock audit passed');
+if (!panel.includes('V81R 基本惁E�� mixed mock mini-set')) throw new Error('V81R panel missing');
+console.log('✁EV81R mixed mock audit passed');
