@@ -26,6 +26,9 @@ Thumbs.db
 # CSV Audit Files
 *.csv
 
+# Test results
+test-results/
+
 # Log files
 *.log
 npm-debug.log*

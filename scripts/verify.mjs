@@ -6,7 +6,7 @@ const bin = (name) => resolve('node_modules/.bin', `${name}${isWin ? '.cmd' : ''
 const steps = [
   ['tsc build', bin('tsc'), ['-b']],
   ['vite build', bin('vite'), ['build']],
-  ['vitest release smoke', 'bash', ['-lc', 'npx vitest run src/test/v76rPythonFinalRelease.test.tsx src/test/v77rPythonFinalContent.test.tsx --pool=vmThreads --maxWorkers=1 --fileParallelism=false --reporter=dot']],
+  ['vitest release smoke', bin('vitest'), ['run', 'src/test/v76rPythonFinalRelease.test.tsx', 'src/test/v77rPythonFinalContent.test.tsx', '--pool=vmThreads', '--maxWorkers=1', '--fileParallelism=false', '--reporter=dot']],
   ['line audit', 'node', ['scripts/line-audit.mjs']],
   ['content audit fast', 'node', ['scripts/content-audit-fast.mjs']],
   ['AI lesson audit', 'node', ['scripts/audit-ai-passport-lessons.mjs']],
