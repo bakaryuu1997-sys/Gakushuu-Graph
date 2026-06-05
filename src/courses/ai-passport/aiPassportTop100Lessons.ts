@@ -4,7 +4,7 @@ import { aiPassportNodes } from './aiPassportGraph';
 import { aiSupplementalNodes } from './aiPassportSupplemental';
 import { aiExpandedNodes } from './domain/expanded';
 
-const allAiNodes = [...aiPassportNodes, ...aiSupplementalNodes, ...aiExpandedNodes];
+
 
 const highPriorityIds = new Set([
   'ai-passport','ai','machine-learning-ai','deep-learning-ai','supervised-ai','unsupervised-ai','reinforcement-learning','linear-regression-ai','logistic-regression-ai','classification-ai','regression-ai','decision-tree-ai','svm-ai','neural-network-ai','cnn-ai','rnn-ai','transformer-ai','generative-ai','llm-ai','prompt-engineering-ai','hallucination-ai','rag-ai','embedding-ai','vector-database-ai','fine-tuning-ai','foundation-model-ai','multimodal-ai','deepfake-ai','data-preprocessing-ai','train-test-data-ai','validation-data-ai','overfitting-ai','underfitting-ai','bias-variance-ai','confusion-matrix-ai','precision-recall-ai','accuracy-ai','f1-score-ai','auc-ai','clustering-ai','pca-ai','feature-engineering-ai','normalization-ai','standardization-ai','missing-values-ai','data-leakage-ai','personal-information-ai','copyright-ai','privacy-ai','bias-fairness-ai','explainable-ai','human-in-the-loop-ai','ai-governance-ai','ai-risk-management-ai','ai-project-flow','ai-business-use','ai-roi','kpi-kgi-ai','model-drift-ai','monitoring-ai','prompt-injection-ai','ai-security-ai','model-stealing-ai','adversarial-example-ai','data-augmentation-ai','anonymization-ai','pseudonymization-ai','opt-in-ai','opt-out-ai','consent-ai','gdpr-ai','personal-information-protection-law-ai','trade-secret-ai','terms-of-use-ai','ai-ethics-guidelines-ai','transparency-ai','accountability-ai','fairness-ai','robustness-ai','safety-ai','reliability-ai','chatbot-ai','recommendation-ai','fraud-detection-ai','demand-forecasting-ai','ocr-ai','speech-recognition-ai','nlp-ai','computer-vision-ai','sentiment-analysis-ai','summarization-ai','translation-ai','classification-metrics-ai','regression-metrics-ai','mae-ai','rmse-ai','r-squared-ai','cloud-ai','edge-ai','api-ai','dataset-ai','label-ai','annotation-ai','sampling-ai','class-imbalance-ai','cross-validation-ai','test-data-ai','training-data-ai'
@@ -100,7 +100,13 @@ const makeLesson = (node: KnowledgeNodeData): LessonContent => {
   };
 };
 
-export const aiPassportTop100Lessons: LessonContent[] = allAiNodes
-  .filter((node) => node.importance === 'high' || highPriorityIds.has(node.id))
-  .slice(0, 140)
-  .map(makeLesson);
+let cachedLessons: LessonContent[] | null = null;
+export function getAiPassportTop100Lessons(): LessonContent[] {
+  if (cachedLessons) return cachedLessons;
+  const allAiNodes = [...aiPassportNodes, ...aiSupplementalNodes, ...aiExpandedNodes];
+  cachedLessons = allAiNodes
+    .filter((node) => node.importance === 'high' || highPriorityIds.has(node.id))
+    .slice(0, 140)
+    .map(makeLesson);
+  return cachedLessons;
+}

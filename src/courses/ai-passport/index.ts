@@ -15,8 +15,8 @@ import { aiPassportDomainLessons } from './domain/lessons';
 import { aiPassportQuizQuestions } from './aiPassportQuiz';
 import { aiPassportStudyPath } from './aiPassportStudyPath';
 import { aiSupplementalQuizQuestions } from './aiPassportSupplementalQuiz';
-import { aiPassportTop100Lessons } from './aiPassportTop100Lessons';
-import { aiPassportUniversalLessons } from './aiPassportUniversalLessons';
+import { getAiPassportTop100Lessons } from './aiPassportTop100Lessons';
+import { getAiPassportUniversalLessons } from './aiPassportUniversalLessons';
 import { aiPassportV35QualityLessons } from './aiPassportV35QualityLessons';
 import { aiPassportV39DeepLessons } from './aiPassportV39DeepLessons';
 import { aiPassportV40ManualLessons } from './aiPassportV40ManualLessons';
@@ -131,7 +131,7 @@ export const aiPassportCourse: CourseConfig = sanitizeCourse({
   theme: { accentClass: 'text-violet-600', darkPanelClass: 'bg-slate-950', progressClass: 'bg-violet-400' },
   nodes: aiCourseNodes,
   edges: [...aiPassportEdges, ...aiSupplementalEdges, ...aiExpandedEdges, ...aiPassportV42QualityEdges],
-  lessons: enrichLessonsWithStudyDetails([...aiPassportV52BeginnerLessons, ...aiPassportV46RealLessons, ...aiPassportV41EthicsBusinessLessons, ...aiPassportV40ManualLessons, ...aiPassportV39DeepLessons, ...aiPassportV35QualityLessons, ...aiPassportDomainLessons, ...aiPassportV12DeepLessons, ...aiPassportTop100Lessons, ...aiPassportExpertLessons, ...aiPassportDeepLessons, ...aiPassportLessons, ...aiSupplementalLessons, ...aiPassportUniversalLessons], aiCourseNodes),
+  lessons: enrichLessonsWithStudyDetails([...aiPassportV52BeginnerLessons, ...aiPassportV46RealLessons, ...aiPassportV41EthicsBusinessLessons, ...aiPassportV40ManualLessons, ...aiPassportV39DeepLessons, ...aiPassportV35QualityLessons, ...aiPassportDomainLessons, ...aiPassportV12DeepLessons, ...getAiPassportTop100Lessons(), ...aiPassportExpertLessons, ...aiPassportDeepLessons, ...aiPassportLessons, ...aiSupplementalLessons, ...getAiPassportUniversalLessons()], aiCourseNodes),
   quizzes: [...aiPassportV41JapaneseScenarios, ...aiPassportV40JapaneseExamQuiz, ...aiPassportV39ScenarioQuiz, ...aiPassportDomainDrillQuiz, ...aiPassportV13JapaneseScenarios, ...aiPassportV12JapaneseScenarios, ...aiPassportHardScenarioQuiz, ...aiPassportJapaneseExamQuiz, ...aiPassportQualityQuiz, ...aiPassportQuizQuestions, ...aiSupplementalQuizQuestions],
   studyPath: aiPassportStudyPath,
   comparePairs: aiPassportComparisons,

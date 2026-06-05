@@ -4,7 +4,7 @@ import { aiPassportNodes } from './aiPassportGraph';
 import { aiSupplementalNodes } from './aiPassportSupplemental';
 import { aiExpandedNodes } from './domain/expanded';
 
-const allAiNodes: KnowledgeNodeData[] = [...aiPassportNodes, ...aiSupplementalNodes, ...aiExpandedNodes];
+
 
 const topicGuide = (node: KnowledgeNodeData) => {
   const text = `${node.id} ${node.keywords.join(' ')} ${node.labelEn}`.toLowerCase();
@@ -90,19 +90,25 @@ const topicGuide = (node: KnowledgeNodeData) => {
   };
 };
 
-export const aiPassportUniversalLessons: LessonContent[] = allAiNodes.map((node) => {
-  const guide = topicGuide(node);
-  return {
-    nodeId: node.id,
-    shortDefinitionVi: `${node.labelVi}: ${node.summaryVi} ${guide.vi}`,
-    shortDefinitionJa: `${node.labelJa}: ${node.summaryJa} ${guide.ja}`,
-    whyImportantVi: `${node.examPointVi} AI Passport thường không chỉ hỏi nghĩa từ, mà hỏi bạn chọn cách dùng đúng trong tình huống thực tế.`,
-    whyImportantJa: `${node.examPointJa} AIパスポートでは、用語の意味だけでなく実務での適切な判断も問われます。`,
-    examPatternsVi: guide.patternVi,
-    examPatternsJa: guide.patternJa,
-    commonMistakesVi: guide.mistakeVi,
-    commonMistakesJa: guide.mistakeJa,
-    memoryTipVi: guide.tipVi,
-    memoryTipJa: guide.tipJa,
-  };
-});
+let cachedLessons: LessonContent[] | null = null;
+export function getAiPassportUniversalLessons(): LessonContent[] {
+  if (cachedLessons) return cachedLessons;
+  const allAiNodes: KnowledgeNodeData[] = [...aiPassportNodes, ...aiSupplementalNodes, ...aiExpandedNodes];
+  cachedLessons = allAiNodes.map((node) => {
+    const guide = topicGuide(node);
+    return {
+      nodeId: node.id,
+      shortDefinitionVi: `${node.labelVi}: ${node.summaryVi} ${guide.vi}`,
+      shortDefinitionJa: `${node.labelJa}: ${node.summaryJa} ${guide.ja}`,
+      whyImportantVi: `${node.examPointVi} AI Passport thường không chỉ hỏi nghĩa từ, mà hỏi bạn chọn cách dùng đúng trong tình huống thực tế.`,
+      whyImportantJa: `${node.examPointJa} AIパスポートでは、用語の意味だけでなく実務での適切な判断も問われます。`,
+      examPatternsVi: guide.patternVi,
+      examPatternsJa: guide.patternJa,
+      commonMistakesVi: guide.mistakeVi,
+      commonMistakesJa: guide.mistakeJa,
+      memoryTipVi: guide.tipVi,
+      memoryTipJa: guide.tipJa,
+    };
+  });
+  return cachedLessons;
+}
